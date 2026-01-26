@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background: #5b539c;
+    text-align: center;
+}
+
+/* ===== Heading ===== */
+h2{
+    margin-bottom: 30px;
+    font-size: 40px;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* ===== Main Container ===== */
+.plan-container{
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* ===== Cards Wrapper ===== */
+.plans{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===== Single Card ===== */
+.plan{
+    width: 300px;
+    min-height: 450px;
+    background: #1f273a;
+    border-radius: 12px;
+    padding: 20px 10px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ===== Card Hover ===== */
+.plan:hover{
+    transform: translateY(-15px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+
+/* ===== Card Titles ===== */
+.plan h4{
+    font-size: 24px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.plan h3{
+    font-size: 48px;
+    color: #fff;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.plan h3 span{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/* ===== Features List ===== */
+.plan ul{
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
+.plan ul li{
+    color: #fff;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* ===== Bullet Color ===== */
+.plan ul li::marker{
+    color: #e4214d;
+}
+
+/* ===== Button ===== */
+.plan button{
+    width: 70%;
+    height: 50px;
+    border: 2px solid #e4214d;
+    margin-top: 20px;
+    border-radius: 6px;
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    transition: background 0.4s ease;
+    cursor: pointer;
+}
+
+/* ===== Highlight Plan ===== */
+.advance button{
+    background: #e4214d;
+}
+
+/* ===== Button Hover ===== */
+.plan button:hover{
+    background: #e4214d;
+}
+
+/* ========================= */
+/* ===== RESPONSIVE ======== */
+/* ========================= */
+
+@media (max-width: 992px){
+    h2{
+        font-size: 34px;
+    }
+}
+
+@media (max-width: 760px){
+    h2{
+        font-size: 28px;
+    }
+
+    .plans{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .plan{
+        width: 90%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px){
+    .plan h3{
+        font-size: 38px;
+    }
+
+    .plan button{
+        width: 85%;
+    }
+}
