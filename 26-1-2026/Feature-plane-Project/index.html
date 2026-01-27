@@ -13,7 +13,7 @@
         <h2>Choose your plan</h2>
         <div class="plans">
         <div class="basic plan">
-            <h4>Starter</h4>
+            <h4 class="planed">Starter</h4>
             <h3>$19<span>/month</span></h3>
             <ul>
                 <li>1 Website</li>
@@ -23,10 +23,10 @@
                 <li>1 Website</li>
                 <li>1 Website</li>
             </ul>
-            <button>Add to cart</button>
+            <button onclick="planCheck('starter')">Add to cart</button>
         </div>
         <div class="advance plan">
-            <h4>Advanced</h4>
+            <h4 class="planed">Advanced</h4>
             <h3>$29<span>/month</span></h3>
             <ul>
                 <li>100 Website</li>
@@ -36,10 +36,10 @@
                 <li>1 Website</li>
                 <li>1 Website</li>
             </ul>
-            <button>Add to cart</button>
+            <button onclick="planCheck('Advance')">Add to cart</button>
         </div>
         <div class="primium plan">
-            <h4>Premium</h4>
+            <h4 class="planed">Premium</h4>
             <h3>$49<span>/month</span></h3>
             <ul>
                 <li>100 Website</li>
@@ -49,10 +49,11 @@
                 <li>1 Website</li>
                 <li>1 Website</li>
             </ul>
-            <button>Add to cart</button>
+            <button onclick="planCheck('Premium')">Add to cart</button>
         </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>

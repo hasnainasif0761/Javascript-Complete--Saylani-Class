@@ -20,7 +20,7 @@ h2{
     color: #fff;
 }
 
-/* ===== Main Container ===== */
+
 .plan-container{
     width: 100%;
     min-height: 100vh;
@@ -31,7 +31,6 @@ h2{
     flex-direction: column;
 }
 
-/* ===== Cards Wrapper ===== */
 .plans{
     display: flex;
     gap: 20px;
@@ -39,7 +38,6 @@ h2{
     flex-wrap: wrap;
 }
 
-/* ===== Single Card ===== */
 .plan{
     width: 300px;
     min-height: 450px;
@@ -49,14 +47,13 @@ h2{
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* ===== Card Hover ===== */
 .plan:hover{
     transform: translateY(-15px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.4);
     cursor: pointer;
 }
 
-/* ===== Card Titles ===== */
+
 .plan h4{
     font-size: 24px;
     color: #fff;
@@ -75,7 +72,7 @@ h2{
     font-weight: 400;
 }
 
-/* ===== Features List ===== */
+
 .plan ul{
     margin-top: 20px;
     padding-left: 20px;
@@ -87,12 +84,12 @@ h2{
     text-align: left;
 }
 
-/* ===== Bullet Color ===== */
+
 .plan ul li::marker{
     color: #e4214d;
 }
 
-/* ===== Button ===== */
+
 .plan button{
     width: 70%;
     height: 50px;
@@ -106,19 +103,14 @@ h2{
     cursor: pointer;
 }
 
-/* ===== Highlight Plan ===== */
 .advance button{
     background: #e4214d;
 }
 
-/* ===== Button Hover ===== */
 .plan button:hover{
     background: #e4214d;
 }
 
-/* ========================= */
-/* ===== RESPONSIVE ======== */
-/* ========================= */
 
 @media (max-width: 992px){
     h2{

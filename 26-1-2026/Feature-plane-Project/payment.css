@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins",sans-serif; }
+
+body {
+    min-height:100vh;
+    background: linear-gradient(135deg,#5b539c,#8f84ff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.payment-box {
+    background:#fff;
+    width:360px;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+.payment-box h2,h3 {
+    margin-bottom:15px;
+    color:#333;
+}
+
+#planInfo {
+    margin:10px 0 20px 0;
+    font-size:16px;
+    font-weight:500;
+    color:#555;
+}
+
+#payBtn, #downloadBtn {
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    background:#5b539c;
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#payBtn:hover, #downloadBtn:hover {
+    background:#433c8a;
+    transform: translateY(-2px);
+}
+
+pre {
+    text-align:left;
+    background:#f4f4f4;
+    padding:10px;
+    border-radius:8px;
+    overflow-x:auto;
+}
