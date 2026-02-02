@@ -18,6 +18,16 @@
 
 
 
+// Use Strick Mode For not binding your global object
+
+function myFunction(){
+    return this;
+}
+
+console.log(myFunction())
+
+
+
 
 
 
