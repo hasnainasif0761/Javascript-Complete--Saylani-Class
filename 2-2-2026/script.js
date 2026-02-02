@@ -28,7 +28,9 @@
 
 
 
-
+hello = function(){
+    document.
+}
 
 
 
