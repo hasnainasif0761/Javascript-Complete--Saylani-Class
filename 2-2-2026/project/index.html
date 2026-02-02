@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker - Huzaifa Revision Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    h1 { text-align: center; color: #2c3e50; }
+    .input-group { margin: 20px 0; display: flex; gap: 10px; }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      background: #27ae60;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover { background: #219653; }
+    .delete-btn {
+      background: #e74c3c;
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+    .delete-btn:hover { background: #c0392b; }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: white;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #total {
+      font-size: 1.4em;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+      color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Expense Tracker</h1>
+
+  <div class="input-group">
+    <input type="text" id="item" placeholder="Kya kharcha? (e.g. Chai)" />
+    <input type="number" id="amount" placeholder="Amount" step="any" />
+    <button onclick="addExpense()">Add</button>
+  </div>
+
+  <ul id="expenseList"></ul>
+
+  <div id="total">Total Expense: 0 PKR</div>
+
+  <script>
+    // ------------------- DATA -------------------
+    let expenses = [
+      // Ye starting dummy data hai – revision ke liye
+      { id: 1, item: "Anda Paratha", amount: 180 },
+      { id: 2, item: "Cold Drink", amount: 120 },
+      { id: 3, item: "Uber", amount: 450 }
+    ];
+
+    let nextId = 4; // har naye expense ko unique id denge
+
+    // ------------------- FUNCTIONS -------------------
+
+    // 1. Total calculate karne wala function (for loop use)
+    function calculateTotal() {
+      let total = 0;
+      for (let i = 0; i < expenses.length; i++) {
+        total += expenses[i].amount;
+      }
+      return total;
+    }
+
+    // 2. List render karne wala function (.map() use)
+    function renderExpenses() {
+      const list = document.getElementById("expenseList");
+      list.innerHTML = ""; // pehle clear karo
+
+      // Modern way with .map()
+      const items = expenses.map(exp => `
+        <li>
+          <span>${exp.item} - <strong>${exp.amount} PKR</strong></span>
+          <button class="delete-btn" onclick="deleteExpense(${exp.id})">Delete</button>
+        </li>
+      `);
+
+      // .join() se string ko real HTML bana dete hain
+      list.innerHTML = items.join("");
+
+      // Total update
+      document.getElementById("total").textContent = 
+        `Total Expense: ${calculateTotal()} PKR`;
+    }
+
+    // 3. Naya expense add karna
+    function addExpense() {
+      const itemInput = document.getElementById("item");
+      const amountInput = document.getElementById("amount");
+
+      const item = itemInput.value.trim();
+      const amount = Number(amountInput.value);
+
+      if (!item || isNaN(amount) || amount <= 0) {
+        alert("Bhai sahi se item aur amount daal do!");
+        return;
+      }
+
+      // Object banao aur array mein push
+      expenses.push({
+        id: nextId++,
+        item: item,
+        amount: amount
+      });
+
+      // Inputs clear
+      itemInput.value = "";
+      amountInput.value = "";
+
+      // List dobara render
+      renderExpenses();
+    }
+
+    // 4. Delete expense (filter use kar ke)
+    function deleteExpense(id) {
+      // Modern tareeqa: filter
+      expenses = expenses.filter(exp => exp.id !== id);
+      renderExpenses();
+    }
+
+    // ------------------- START -------------------
+    // Page load hone pe pehli baar list dikhao
+    renderExpenses();
+
+    // Optional: Enter key se bhi add ho jaye
+    document.getElementById("amount").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        addExpense();
+      }
+    });
+  </script>
+</body>
+</html>
