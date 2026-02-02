@@ -19,12 +19,18 @@
 
 
 // Use Strick Mode For not binding your global object
+// "use strict"
+// function myFunction(){
+//     return this;
+// }
 
-function myFunction(){
-    return this;
-}
+// console.log(myFunction())
 
-console.log(myFunction())
+
+
+
+
+
 
 
 
