@@ -1,161 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Expense Tracker - Huzaifa Revision Project</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Traker Application</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 30px auto;
-      padding: 20px;
-      background: #f9f9f9;
-    }
-    h1 { text-align: center; color: #2c3e50; }
-    .input-group { margin: 20px 0; display: flex; gap: 10px; }
-    input, button {
-      padding: 10px;
-      font-size: 16px;
-    }
-    button {
-      background: #27ae60;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover { background: #219653; }
-    .delete-btn {
-      background: #e74c3c;
-      padding: 6px 12px;
-      font-size: 14px;
-    }
-    .delete-btn:hover { background: #c0392b; }
-    ul {
-      list-style: none;
+    *
+    {
+      margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
     }
-    li {
-      background: white;
-      margin: 10px 0;
-      padding: 12px;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    body
+    {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      height: 100vh;
+      width: 100%;
+      background: #4B0082;
     }
-    #total {
-      font-size: 1.4em;
-      font-weight: bold;
+    .container
+    {
+      width: 400px;
+      height: 400px;
+      background-color: #800080;
+      border-radius: 10px;
+      padding: 10PX;
+    }
+    .container h2
+    {
       text-align: center;
-      margin-top: 20px;
-      color: #2980b9;
+      margin-bottom: 10px;
+      color: white;
     }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+       margin: 0;
+    }
+
+    input[type=number] {
+    -moz-appearance: textfield;
+}
+
+  input
+  {
+    padding: 10px 10px;
+  }
+  #btn
+  {
+    width: 100%;
+    padding: 10px 10px;
+    margin-top: 5px;
+    background: #008B8B;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s ease;
+    color: white;
+  }
+  #btn:active
+  {
+    scale: 1.1;
+  }
+  #expense-items
+  {
+    width: 100%;
+    height: 220px;
+    border: 3px solid green;
+    margin-top: 5px;
+    /* padding: 10px 10px; */
+    overflow-y: auto;
+  }
+  ul li
+  {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #111;
+    padding: 10px 10px;
+    align-items: center;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  li button
+  {
+    width: 100px;
+    height: 30px;
+    background: red;
+    border: none;
+    border-radius: 5px;
+  }
+  li span
+  {
+    color: white;
+    font-size: 20px;
+  }
+  #total
+  {
+    width: 100%;
+    height: auto;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+  }
+  .not-list
+  {
+    width: 100%;
+    height: 100%;
+    background: #dda0dd8c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+    font-size: 25px;
+    color: white;
+  }
   </style>
 </head>
 <body>
+    <div class="container">
+      <h2>Expense Tracker</h2>
+      <input type="text" id="product" placeholder="Enter you product name">
+      <input type="number" id="amount" placeholder="Enter you product amount">
+      <button onclick="addExpense()" id="btn">Add Expence</button>
+      <ul id="expense-items">
+          <div class="not-list">Emty List</div>
+      </ul>
+      <p id="total">Total Amount is: 0</p>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
 
-  <h1>Expense Tracker</h1>
+      let Expence = [];
+      let list = document.getElementById('expense-items');
+      function addExpense(){
+        let ExpenseObj = {} ;
+          let itemName = document.getElementById('product').value;
+          let itemAmount = document.getElementById('amount').value;
+          ExpenseObj['name'] = itemName
+          ExpenseObj['Amount'] = itemAmount
+          Expence.unshift(ExpenseObj);
+          
 
-  <div class="input-group">
-    <input type="text" id="item" placeholder="Kya kharcha? (e.g. Chai)" />
-    <input type="number" id="amount" placeholder="Amount" step="any" />
-    <button onclick="addExpense()">Add</button>
-  </div>
+          list.innerHTML = "";
+          let id = 0;
+        var items = Expence.map(exp => `
+            <li>
+              <span>${id = id+1}.  ${exp.name} - ${exp.Amount}</span>
+              <button onclick="delete_expense(${id})">Delete</button>
+            </li>        
+        `);
+        list.innerHTML = items.join('');
 
-  <ul id="expenseList"></ul>
+        document.getElementById('product').value = "";
+        document.getElementById('amount').value = "";
 
-  <div id="total">Total Expense: 0 PKR</div>
+        }
 
-  <script>
-    // ------------------- DATA -------------------
-    let expenses = [
-      // Ye starting dummy data hai – revision ke liye
-      { id: 1, item: "Anda Paratha", amount: 180 },
-      { id: 2, item: "Cold Drink", amount: 120 },
-      { id: 3, item: "Uber", amount: 450 }
-    ];
+        function delete_expense(id){
+          // Expence = Expence.filter(exp => exp.id !== id);
+          console.log(id)
+        }
 
-    let nextId = 4; // har naye expense ko unique id denge
-
-    // ------------------- FUNCTIONS -------------------
-
-    // 1. Total calculate karne wala function (for loop use)
-    function calculateTotal() {
-      let total = 0;
-      for (let i = 0; i < expenses.length; i++) {
-        total += expenses[i].amount;
-      }
-      return total;
-    }
-
-    // 2. List render karne wala function (.map() use)
-    function renderExpenses() {
-      const list = document.getElementById("expenseList");
-      list.innerHTML = ""; // pehle clear karo
-
-      // Modern way with .map()
-      const items = expenses.map(exp => `
-        <li>
-          <span>${exp.item} - <strong>${exp.amount} PKR</strong></span>
-          <button class="delete-btn" onclick="deleteExpense(${exp.id})">Delete</button>
-        </li>
-      `);
-
-      // .join() se string ko real HTML bana dete hain
-      list.innerHTML = items.join("");
-
-      // Total update
-      document.getElementById("total").textContent = 
-        `Total Expense: ${calculateTotal()} PKR`;
-    }
-
-    // 3. Naya expense add karna
-    function addExpense() {
-      const itemInput = document.getElementById("item");
-      const amountInput = document.getElementById("amount");
-
-      const item = itemInput.value.trim();
-      const amount = Number(amountInput.value);
-
-      if (!item || isNaN(amount) || amount <= 0) {
-        alert("Bhai sahi se item aur amount daal do!");
-        return;
-      }
-
-      // Object banao aur array mein push
-      expenses.push({
-        id: nextId++,
-        item: item,
-        amount: amount
-      });
-
-      // Inputs clear
-      itemInput.value = "";
-      amountInput.value = "";
-
-      // List dobara render
-      renderExpenses();
-    }
-
-    // 4. Delete expense (filter use kar ke)
-    function deleteExpense(id) {
-      // Modern tareeqa: filter
-      expenses = expenses.filter(exp => exp.id !== id);
-      renderExpenses();
-    }
-
-    // ------------------- START -------------------
-    // Page load hone pe pehli baar list dikhao
-    renderExpenses();
-
-    // Optional: Enter key se bhi add ho jaye
-    document.getElementById("amount").addEventListener("keypress", function(e) {
-      if (e.key === "Enter") {
-        addExpense();
-      }
-    });
-  </script>
+    </script>
 </body>
 </html>
