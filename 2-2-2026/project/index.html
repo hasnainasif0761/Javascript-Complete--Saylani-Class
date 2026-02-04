@@ -92,6 +92,7 @@
     background: red;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
   }
   li span
   {
@@ -127,7 +128,7 @@
       function addExpense(){
         let ExpenseObj = {} ;
           let itemName = document.getElementById('product').value;
-          let itemAmount = document.getElementById('amount').value;
+          let itemAmount = +document.getElementById('amount').value;
           ExpenseObj['name'] = itemName
           ExpenseObj['Amount'] = itemAmount
           Expence.unshift(ExpenseObj);
@@ -152,6 +153,12 @@
           <button onclick="delete_expense(${index})">Delete</button>
         </li>
       `);
+      
+      let total = 0;
+      Expence.forEach(exp => {
+      total += exp.Amount;
+    });
+      document.getElementById('total').innerText = "Total Amount is: " + total;
 
       list.innerHTML = items.join('');
         }
