@@ -49,6 +49,8 @@
   input
   {
     padding: 10px 10px;
+    border: none;
+    outline: none;
   }
   #btn
   {
@@ -61,6 +63,7 @@
     cursor: pointer;
     transition: 0.5s ease;
     color: white;
+    outline: none;
   }
   #btn:active
   {
@@ -137,6 +140,12 @@
 
         document.getElementById('product').value = "";
         document.getElementById('amount').value = "";
+
+        Toastify({
+          text: "Add Expence Successfully 🎉",
+          duration: 2000,
+          backgroundColor: '#3CB371'
+        }).showToast();
         }
 
         function renderFunc(){
@@ -164,8 +173,24 @@
         }
 
         function delete_expense(id){
-          Expence.splice(id,1);
+         let confirmed = confirm('Are you sure you want to delete this expence');
+         if(confirmed)
+         {
+           Expence.splice(id,1);
           renderFunc();
+          Toastify({
+          text: "⚠️ Delete Expence Successfully 🎉",
+          duration: 2000,
+          backgroundColor: '#DC143C'
+        }).showToast();
+         }else
+         {
+          Toastify({
+          text: "❓Expence Record is not delete",
+          duration: 2000,
+          backgroundColor: '#DC143C'
+        }).showToast();
+         }
         }
 
     </script>
