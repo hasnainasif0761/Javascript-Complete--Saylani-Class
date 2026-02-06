@@ -28,6 +28,13 @@ console.log("Js is running");
 // console.log(result)
 
 
+// ((uname)=>{
+//     let text = "Hello " + uname
+//     console.log(text)
+// })()
+
+
+
 
 
 
