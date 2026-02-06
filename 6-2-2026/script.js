@@ -22,6 +22,14 @@ console.log("Js is running");
 
 // console.log(uname)  // output is Huzaifa
 
+// let result = (function(){
+//     return 5 + 5;
+// })()
+// console.log(result)
+
+
+
+
 
 
 
