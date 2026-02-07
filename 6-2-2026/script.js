@@ -33,14 +33,18 @@ console.log("Js is running");
 //     console.log(text)
 // })()
 
-var result = (function factorial(n){
-    if(n <= 1) return 1;
-    return n * factorial(n - 1); // 12 // 8 //4
-})(4)
-console.log(result)
+// var result = (function factorial(n){
+//     if(n <= 1) return 1;
+//     return n * factorial(n - 1); // 12 // 8 //4
+// })(4)
+// console.log(result)
 
 
-
+// let result = (function factorial(num){
+//     if(num <= 1) return 1;
+//     return num *  factorial(num - 1) //3 //2 //4 //1
+// })(4)
+// console.log(result);
 
 
 
